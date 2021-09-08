@@ -23,5 +23,5 @@ function App() {
     </>
   );
 }
-
+// this is app.js file of react 
 export default App;
