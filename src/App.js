@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import { useState } from "react";
+import { add } from "./action/index";
+import { useDispatch } from "react-redux";
+import ShowData from "./ShowData";
 function App() {
+  const [data, setData] = useState(false);
+  const dispatch = useDispatch();
+  // console.log("value ", reducer.reducers);
+  // const info = Object.key(reducer.reducers);
+  const clickHandler = () => {
+    dispatch(add());
+    setData(!data);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="App">
+        <button onClick={clickHandler}>click me</button>
+      </div>
+
+      {data === true && <ShowData />}
+    </>
   );
 }
 
